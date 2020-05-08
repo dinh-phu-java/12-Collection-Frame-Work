@@ -11,6 +11,5 @@ public class Main {
 
         myTree.printPostOrder(myTree.root);
 
-
     }
 }
