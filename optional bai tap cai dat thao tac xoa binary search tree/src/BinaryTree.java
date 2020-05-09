@@ -1,66 +1,72 @@
-public class BinaryTree{
+public class BinaryTree {
     public Node root;
-    public BinaryTree(){
-        this.root=null;
+
+    public BinaryTree() {
+        this.root = null;
     }
 
-    public void delete(int key){
-        this.root=deleteRect(this.root,key);
+    public void delete(int key) {
+        this.root = deleteRect(this.root, key);
     }
-    private Node deleteRect(Node node,int key){
-        if(node ==null) return node;
 
-        if(key < node.key)
-            node.left=deleteRect(node.left,key);
-        else if(key > node.key)
-            node.right= deleteRect(node.right,key);
-        else{
-            if(node.left == null)
+    private Node deleteRect(Node node, int key) {
+        if (node == null) return node;
+
+        if (key < node.key)
+            node.left = deleteRect(node.left, key);
+        else if (key > node.key)
+            node.right = deleteRect(node.right, key);
+        else {
+            if (node.left == null)
                 return node.right;
-            else if(node.right==null)
+            else if (node.right == null)
                 return node.left;
 
-            node.key= getMinValue(node.right);
-            node.right=deleteRect(node.right,node.key);
+            node.key = getMinValue(node.right);
+            node.right = deleteRect(node.right, node.key);
         }
         return node;
     }
-    public int getMinValue(Node node){
-        int minValue=node.key;
-        while(node.left != null){
-            minValue=node.left.key;
-            node=node.left;
+
+    public int getMinValue(Node node) {
+        int minValue = node.key;
+        while (node.left != null) {
+            minValue = node.left.key;
+            node = node.left;
         }
         return minValue;
     }
-    public void insert(int key){
-        this.root=insertRec(this.root,key);
+
+    public void insert(int key) {
+        this.root = insertRec(this.root, key);
     }
-    private Node insertRec(Node node,int key){
-        if(node == null){
-            node =new Node(key);
+
+    private Node insertRec(Node node, int key) {
+        if (node == null) {
+            node = new Node(key);
             return node;
         }
-        if(key < node.key)
-            node.left=insertRec(node.left,key);
-        else if(key > node.key)
-            node.right=insertRec(node.right,key);
+        if (key < node.key)
+            node.left = insertRec(node.left, key);
+        else if (key > node.key)
+            node.right = insertRec(node.right, key);
 
         return node;
     }
-    public void printPostOrder(){
+
+    public void printPostOrder() {
         printPostOrder(this.root);
     }
-    private void printPostOrder(Node node){
-        if(node == null)
+
+    private void printPostOrder(Node node) {
+        if (node == null)
             return;
 
         printPostOrder(node.left);
         printPostOrder(node.right);
-        System.out.print(node.key+ " ");
+        System.out.print(node.key + " ");
     }
 }
-
 
 
 
