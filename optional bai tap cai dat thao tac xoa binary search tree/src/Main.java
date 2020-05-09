@@ -1,15 +1,27 @@
 public class Main {
     public static void main(String[] args) {
-        BinaryTree myTree= new BinaryTree();
-        myTree.root=new Node("A");
-        myTree.root.left=new Node("B",myTree.root,null,null);
-        myTree.root.right=new Node("C",myTree.root,null,null);
-        myTree.root.left.left=new Node("D",myTree.root.left,null,null);
-        myTree.root.left.right=new Node("E",myTree.root.left,null,null);
-        myTree.root.right.left=new Node("D",myTree.root.right,null,null);
-        myTree.root.right.right=new Node("E",myTree.root.right,null,null);
+        BinaryTree myTree = new BinaryTree();
+        myTree.insert(10);
+        myTree.insert(5);
+        myTree.insert(20);
+        myTree.insert(3);
+        myTree.insert(7);
+        myTree.insert(15);
+        myTree.insert(25);
+        myTree.insert(-1);
+        myTree.insert(4);
 
-        myTree.findNode(myTree.root,"E");
+        System.out.println("Before delete");
+
+
+        myTree.printPostOrder();
+        System.out.println();
+
+        System.out.println("after delete");
+        myTree.delete(-10);
+        myTree.printPostOrder();
+        System.out.println();
+
 
     }
 }
