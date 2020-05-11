@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public class ProductManager {
+public class ProductManager  {
     private ArrayList<Product> listProduct;
 
     public ProductManager(){
@@ -15,7 +18,9 @@ public class ProductManager {
         int indexValue=-1;
         indexValue= getIndexCompareByName(oldProductName);
         if(indexValue != -1){
-
+            this.listProduct.set(indexValue,new Product(newProductName,this.listProduct.get(indexValue).getProductPrice()));
+        }else{
+            System.out.println("Can't find "+ oldProductName);
         }
     }
 
@@ -67,4 +72,13 @@ public class ProductManager {
         return -1;
     }
 
+    public void mySort(){
+        Collections.sort(this.listProduct,new Comparator<Product>(){
+            @Override
+            public int compare(Product p1,Product p2){
+                if(p1.getProductName().compareTo(p2.getProductName()) > 0) return 1;
+                else return -1;
+            }
+        });
+    }
 }
