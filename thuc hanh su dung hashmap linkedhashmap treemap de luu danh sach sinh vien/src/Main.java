@@ -17,13 +17,13 @@ public class Main {
             System.out.println();
         });
 
-        TreeMap<String,Double> myTreeMap = new TreeMap<>(new Comparator<String>(){
+        TreeMap<String,Double> myTreeMap = new TreeMap<>(new Comparator<String>() {
             @Override
-            public int compare(String o1,String o2){
-                if(o1.compareTo(o2) < 0) return 1;
+            public int compare(String o1, String o2) {
+                if(o2.compareTo(o1) >0) return 1;
                 else return -1;
             }
-        });
+    });
 
         myTreeMap.putAll(myStudentList);
         System.out.println("Here is my TreeMap");
